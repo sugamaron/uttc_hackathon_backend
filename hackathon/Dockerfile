@@ -1,6 +1,8 @@
 FROM golang:latest as build
 
-COPY * .
+ENV GOPATH=
+
+COPY . .
 
 RUN go build main.go
 
