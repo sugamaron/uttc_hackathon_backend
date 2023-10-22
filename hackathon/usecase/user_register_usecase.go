@@ -1,21 +1,23 @@
 package usecase
 
-import "C"
 import (
-	"db/dao"
-	"db/model"
 	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"github.com/oklog/ulid/v2"
+	"hackathon/dao"
+	"hackathon/model"
 	"io"
 	"log"
 	"net/http"
+	"unicode/utf8"
 )
 
-func HandlerPost(c *gin.Context) {
+// ユーザ情報登録
+func RegisterUser(c *gin.Context) {
 	id := ulid.Make()
 	idString := id.String()
 
+	// リクエストボディ読み込む
 	body, err := io.ReadAll(c.Request.Body)
 	if err != nil {
 		log.Printf("fail: io.ReadALL, %v\n", err)
@@ -29,37 +31,25 @@ func HandlerPost(c *gin.Context) {
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
 	}
+	user.UserId = idString
 
-	if user.Name == "" {
+	if user.UserName == "" {
 		log.Printf("fail:Name is empty, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
 	}
-	if len(user.Name) > 50 {
+
+	if utf8.RuneCountInString(user.UserName) > 50 {
 		log.Printf("fail:Length of name is over 50, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
 	}
-	if user.Age < 20 || user.Age > 80 {
-		log.Printf("fail:Age is inappropriate, %v\n", err)
-		c.String(http.StatusInternalServerError, "Server Error")
-		return
-	}
 
-	if dao.InsertUser(c, idString, user) != nil {
+	if dao.InsertUserDao(user) != nil {
 		log.Printf("fail: db.Exec, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
 	} else {
-		var newId model.InsertId
-		newId.Id = idString
-		bytes, err := json.Marshal(newId)
-		if err != nil {
-			log.Printf("fail: json.Marshal, %v\n", err)
-			c.String(http.StatusInternalServerError, "Server Error")
-			return
-		}
-		c.Data(http.StatusOK, "application/json; charset=utf-8", bytes)
-
+		c.JSON(http.StatusOK, gin.H{"message": "success", "date": user})
 	}
 }

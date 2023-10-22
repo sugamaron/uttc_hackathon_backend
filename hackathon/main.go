@@ -1,9 +1,9 @@
 package main
 
 import (
-	"db/controller"
-	"db/dao"
 	_ "github.com/go-sql-driver/mysql"
+	"hackathon/controller"
+	"hackathon/dao"
 )
 
 func main() {

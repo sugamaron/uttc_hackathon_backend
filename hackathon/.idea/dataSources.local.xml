@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="GO-232.8660.185">
-    <data-source name="hackathon@104.154.74.141" uuid="edcee77d-0e6b-4c75-9dd9-c2e546f343bc">
+    <data-source name="hackathon@104.154.74.141" uuid="f6e0f3ec-b88b-4aee-a4ec-58a4a375d549">
       <database-info product="MySQL" version="8.0.31-google" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.31" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
@@ -16,9 +16,9 @@
         </introspection-scope>
       </schema-mapping>
       <ssl-config use-ide-store="true" use-java-store="true" use-system-store="true">
-        <ca-cert>$PROJECT_DIR$/dao/pem/server-ca.pem</ca-cert>
-        <client-cert>$PROJECT_DIR$/dao/pem/client-cert.pem</client-cert>
-        <client-key>$PROJECT_DIR$/dao/pem/client-key.pem</client-key>
+        <ca-cert>$USER_HOME$/Desktop/pem/server-ca.pem</ca-cert>
+        <client-cert>$USER_HOME$/Desktop/pem/client-cert.pem</client-cert>
+        <client-key>$USER_HOME$/Desktop/pem/client-key.pem</client-key>
         <enabled>true</enabled>
         <mode>REQUIRE</mode>
       </ssl-config>

@@ -2,9 +2,8 @@ package dao
 
 import (
 	"database/sql"
-	"db/model"
 	"fmt"
-	"github.com/gin-gonic/gin"
+	"hackathon/model"
 	"log"
 	"os"
 	"os/signal"
@@ -31,9 +30,9 @@ func init() {
 	}
 }
 
-func InsertUser(c *gin.Context, idString string, user model.User) error {
-	const sql_insert = "INSERT INTO user(id, name, age) VALUE(?, ?, ?)"
-	_, err := db.Exec(sql_insert, idString, user.Name, user.Age)
+func InsertUserDao(user model.User) error {
+	const sql_insert = "INSERT INTO user(user_id, user_name, email, term) VALUE(?, ?, ?, ?)"
+	_, err := db.Exec(sql_insert, user.UserId, user.UserName, user.Email, user.Term)
 	if err != nil {
 		log.Printf("fail: db.Exec, %v\n", err)
 		return err
@@ -42,13 +41,36 @@ func InsertUser(c *gin.Context, idString string, user model.User) error {
 	}
 }
 
-func SearchUser(name string) (*sql.Rows, error) {
-	rows, err := db.Query("SELECT id, name, age FROM user WHERE name = ?", name)
+func GetUserDao(user_id string) (*sql.Rows, error) {
+	const sql_get = "SELECT user_id, user_name, email, term FROM user WHERE user_id = ?"
+	rows, err := db.Query(sql_get, user_id)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
 		return nil, err
 	} else {
 		return rows, nil
+	}
+}
+
+func DeleteUserDao(user_id string) error {
+	const sql_delete = "DELETE FROM user WHERE user_id = ?"
+	_, err := db.Exec(sql_delete, user_id)
+	if err != nil {
+		log.Printf("fail: db.Exec, %v\n", err)
+		return err
+	} else {
+		return nil
+	}
+}
+
+func UpdateUserDao(user model.User) error {
+	const sql_update = "UPDATE user SET user_name=?, email=?, term=? WHERE user_id = ?"
+	_, err := db.Exec(sql_update, user.UserName, user.Email, user.Term, user.UserId)
+	if err != nil {
+		log.Printf("fail: db.Exec, %v\n", err)
+		return err
+	} else {
+		return nil
 	}
 }
 

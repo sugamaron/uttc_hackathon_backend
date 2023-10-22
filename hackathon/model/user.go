@@ -1,11 +1,8 @@
 package model
 
 type User struct {
-	Id   string `json:"id"`
-	Name string `json:"name"`
-	Age  int    `json:"age"`
-}
-
-type InsertId struct {
-	Id string `json:"id"`
+	UserId   string `json:"user_id"`
+	UserName string `json:"user_name"`
+	Email    string `json:"email"`
+	Term     int    `json:"term"`
 }
