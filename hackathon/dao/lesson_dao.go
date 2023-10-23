@@ -3,20 +3,18 @@ package dao
 import (
 	"database/sql"
 	"fmt"
-	"log"
-	"os"
-
 	_ "github.com/go-sql-driver/mysql"
+	"log"
 )
 
 func init() {
 	// DB接続のための準備
-	mysqlUser := os.Getenv("MYSQL_USER")
-	mysqlPwd := os.Getenv("MYSQL_PWD")
-	mysqlHost := os.Getenv("MYSQL_HOST")
-	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
+	//mysqlUser := os.Getenv("MYSQL_USER")
+	//mysqlPwd := os.Getenv("MYSQL_PWD")
+	//mysqlHost := os.Getenv("MYSQL_HOST")
+	//mysqlDatabase := os.Getenv("MYSQL_DATABASE")
 
-	connStr := fmt.Sprintf("%s:%s@%s/%s", mysqlUser, mysqlPwd, mysqlHost, mysqlDatabase)
+	connStr := fmt.Sprintf("%s:%s@%s/%s", "suga", "sugamasa0914", "unix(/cloudsql/term4-kazumasa-sugawara:us-central1:uttc)", "hackathon")
 	db, err := sql.Open("mysql", connStr)
 	if err != nil {
 		log.Fatalf("fail: sql.Open, %v\n", err)
