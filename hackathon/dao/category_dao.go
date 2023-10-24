@@ -3,7 +3,6 @@ package dao
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
 	"log"
 	"os"
 )
@@ -26,8 +25,8 @@ func init() {
 	}
 }
 
-func GetLessonsDao() (*sql.Rows, error) {
-	const sql_get = "SELECT lesson_name FROM lesson"
+func GetCategoriesDao() (*sql.Rows, error) {
+	const sql_get = "SELECT category_name FROM category"
 	rows, err := db.Query(sql_get)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
@@ -37,9 +36,9 @@ func GetLessonsDao() (*sql.Rows, error) {
 	}
 }
 
-func GetLessonNameDao(lessonId string) (*sql.Rows, error) {
-	const sql_get = "SELECT lesson_name FROM lesson WHERE lesson_id = ?"
-	rows, err := db.Query(sql_get, lessonId)
+func GetCategoryNameDao(categoryId string) (*sql.Rows, error) {
+	const sql_get = "SELECT category_name FROM category WHERE category_id = ?"
+	rows, err := db.Query(sql_get, categoryId)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
 		return nil, err
