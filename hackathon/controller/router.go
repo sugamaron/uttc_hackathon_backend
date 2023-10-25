@@ -18,10 +18,11 @@ func GetRouter() *gin.Engine {
 	r.GET("/categories/:category_id", usecase.GetCategoryName)
 	r.GET("/items/:lesson_id/:category_id", usecase.GetItems)
 	r.GET("/items/:item_id", usecase.GetItemDetail)
-	r.POST("/items", usecase.RegisterItem)//未完成
-	r.PUT("items/:item_id")//未完成
-	r.DELETE("items/:item_id", usecase.DeleteItem)
-	r.POST("likes/:user_id/:item_id", usecase.)
+	r.POST("/items", usecase.RegisterItem)
+	r.PUT("/items/:item_id")
+	r.DELETE("/items/:item_id", usecase.DeleteItem)
+	r.POST("/likes", usecase.RegisterLike)
+	r.DELETE("/likes/:user_id/:item_id", usecase.DeleteLike)
 
 	return r
 }

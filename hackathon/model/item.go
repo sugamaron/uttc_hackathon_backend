@@ -34,3 +34,7 @@ type ItemForRegistration struct {
 	Likes        int    `json:"likes"`
 	Price        int    `json:"price"`
 }
+
+type LikeNum struct {
+	LikeNumStr string `json:"like_num_str"`
+}

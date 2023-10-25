@@ -65,9 +65,9 @@ func DeleteUserDao(user_id string) error {
 	}
 }
 
-func UpdateUserDao(user model.User) error {
-	const sql_update = "UPDATE user SET user_name=?, email=?, term=? WHERE user_id = ?"
-	_, err := db.Exec(sql_update, user.UserName, user.Email, user.Term, user.UserId)
+func UpdateUserDao(userId string, updateStr string) error {
+	const sql_update = "UPDATE user SET ? WHERE user_id = ?"
+	_, err := db.Exec(sql_update, updateStr, userId)
 	if err != nil {
 		log.Printf("fail: db.Exec, %v\n", err)
 		return err

@@ -50,6 +50,6 @@ func RegisterUser(c *gin.Context) {
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
 	} else {
-		c.JSON(http.StatusOK, gin.H{"message": "success", "date": user})
+		c.JSON(http.StatusOK, gin.H{"message": "success", "data": user})
 	}
 }
