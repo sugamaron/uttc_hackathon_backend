@@ -22,14 +22,17 @@ func init() {
 	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
 
 	connStr := fmt.Sprintf("%s:%s@%s/%s", mysqlUser, mysqlPwd, mysqlHost, mysqlDatabase)
-	db, err := sql.Open("mysql", connStr)
+	//ローカルでテスト用
+	//connStr := fmt.Sprintf("%s:%s@%s/%s", "test_user", "password", "test_database")
+	_db, err := sql.Open("mysql", connStr)
 	if err != nil {
 		log.Fatalf("fail: sql.Open, %v\n", err)
 	}
 
-	if err := db.Ping(); err != nil {
+	if err := _db.Ping(); err != nil {
 		log.Fatalf("fail: _db.Ping, %v\n", err)
 	}
+	db = _db
 }
 
 func InsertUserDao(user model.User) error {
