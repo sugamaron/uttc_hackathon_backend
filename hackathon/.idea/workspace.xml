@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dec8e9f-b37e-40b5-b846-da6c487e4cfa" name="変更" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/category_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/category_dao.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/lesson_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/lesson_dao.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dao/user_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/user_dao.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usecase/item_get_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/item_get_usecase.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usecase/user_get_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/user_get_usecase.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usecase/user_get_usecase_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/user_get_usecase_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +64,16 @@
     ]
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go テスト.TestGetUser (hackathon/usecase 内)">
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="hackathon" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="hackathon" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestGetUser (hackathon/usecase 内)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="hackathon" />
       <working_directory value="$PROJECT_DIR$/usecase" />
@@ -72,6 +89,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Go テスト.TestGetUser (hackathon/usecase 内)" />
+        <item itemvalue="Go ビルド.go build main.go" />
       </list>
     </recent_temporary>
   </component>

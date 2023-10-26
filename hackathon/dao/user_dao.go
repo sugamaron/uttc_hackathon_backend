@@ -21,9 +21,11 @@ func init() {
 	mysqlHost := os.Getenv("MYSQL_HOST")
 	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
 
+	// MYSQL_USER=test_user MYSQL_PWD=password MYSQL_HOST=(localhost:3306) MYSQL_DATABASE=test_database go run main.go
 	connStr := fmt.Sprintf("%s:%s@%s/%s", mysqlUser, mysqlPwd, mysqlHost, mysqlDatabase)
+	fmt.Printf(connStr)
 	//ローカルでテスト用
-	//connStr := fmt.Sprintf("%s:%s@%s/%s", "test_user", "password", "test_database")
+	//connStr := fmt.Sprintf("%s:%s@(localhost:3306)/%s", "test_user", "password", "test_database")
 	_db, err := sql.Open("mysql", connStr)
 	if err != nil {
 		log.Fatalf("fail: sql.Open, %v\n", err)

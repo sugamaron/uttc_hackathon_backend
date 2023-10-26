@@ -2,29 +2,9 @@ package dao
 
 import (
 	"database/sql"
-	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"log"
-	"os"
 )
-
-func init() {
-	// DB接続のための準備
-	mysqlUser := os.Getenv("MYSQL_USER")
-	mysqlPwd := os.Getenv("MYSQL_PWD")
-	mysqlHost := os.Getenv("MYSQL_HOST")
-	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
-
-	connStr := fmt.Sprintf("%s:%s@%s/%s", mysqlUser, mysqlPwd, mysqlHost, mysqlDatabase)
-	db, err := sql.Open("mysql", connStr)
-	if err != nil {
-		log.Fatalf("fail: sql.Open, %v\n", err)
-	}
-
-	if err := db.Ping(); err != nil {
-		log.Fatalf("fail: _db.Ping, %v\n", err)
-	}
-}
 
 // 章の名前一覧取得
 func GetLessonsDao() (*sql.Rows, error) {

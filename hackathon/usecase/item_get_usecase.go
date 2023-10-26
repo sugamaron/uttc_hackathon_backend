@@ -10,8 +10,8 @@ import (
 )
 
 func GetItems(c *gin.Context) {
-	lessonId := c.Param("lesson_id")
-	categoryId := c.Param("category_id")
+	lessonId := c.Query("lesson_id")
+	categoryId := c.Query("category_id")
 
 	rows, err := dao.GetItemsDao(lessonId, categoryId)
 	if err != nil {

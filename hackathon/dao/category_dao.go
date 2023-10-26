@@ -2,28 +2,8 @@ package dao
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
-	"os"
 )
-
-func init() {
-	// DB接続のための準備
-	mysqlUser := os.Getenv("MYSQL_USER")
-	mysqlPwd := os.Getenv("MYSQL_PWD")
-	mysqlHost := os.Getenv("MYSQL_HOST")
-	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
-
-	connStr := fmt.Sprintf("%s:%s@%s/%s", mysqlUser, mysqlPwd, mysqlHost, mysqlDatabase)
-	db, err := sql.Open("mysql", connStr)
-	if err != nil {
-		log.Fatalf("fail: sql.Open, %v\n", err)
-	}
-
-	if err := db.Ping(); err != nil {
-		log.Fatalf("fail: _db.Ping, %v\n", err)
-	}
-}
 
 // カテゴリの名前一覧取得
 func GetCategoriesDao() (*sql.Rows, error) {
