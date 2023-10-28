@@ -4,36 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dec8e9f-b37e-40b5-b846-da6c487e4cfa" name="変更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1a5c04a9-80fc-41c8-9960-e441556fe63b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1a5c04a9-80fc-41c8-9960-e441556fe63b.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8336aaf0-dd1f-4452-a790-2b54ad748f5f.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8336aaf0-dd1f-4452-a790-2b54ad748f5f/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8336aaf0-dd1f-4452-a790-2b54ad748f5f/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8336aaf0-dd1f-4452-a790-2b54ad748f5f/storage_v2/_src_/schema/test_database.iAKHIA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b66aee4b-5006-4dd3-880d-77e0d482e108.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b66aee4b-5006-4dd3-880d-77e0d482e108.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e7e9531e-400b-4baf-9c23-95cd78af6baa.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e7e9531e-400b-4baf-9c23-95cd78af6baa/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e7e9531e-400b-4baf-9c23-95cd78af6baa/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e7e9531e-400b-4baf-9c23-95cd78af6baa/storage_v2/_src_/schema/test_database.iAKHIA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6e0f3ec-b88b-4aee-a4ec-58a4a375d549.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6e0f3ec-b88b-4aee-a4ec-58a4a375d549.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6e0f3ec-b88b-4aee-a4ec-58a4a375d549/storage_v2/_src_/schema/hackathon.s8RLyQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6e0f3ec-b88b-4aee-a4ec-58a4a375d549/storage_v2/_src_/schema/hackathon.s8RLyQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/item_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/item_dao.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/lesson_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/lesson_dao.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/like_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/like_dao.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/user_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/user_dao.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/item.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/item.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usecase/category_get_name_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/category_get_name_usecase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usecase/item_get_detail_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/item_get_detail_usecase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usecase/item_register_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/item_register_usecase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usecase/item_update_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/item_update_usecase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usecase/lesson_get_name_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/lesson_get_name_usecase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usecase/lesson_get_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/lesson_get_usecase.go" afterDir="false" />
-    </list>
+    <list default="true" id="7dec8e9f-b37e-40b5-b846-da6c487e4cfa" name="変更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

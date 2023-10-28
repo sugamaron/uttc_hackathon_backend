@@ -9,20 +9,12 @@ import (
 func GetRouter() *gin.Engine {
 	r := gin.Default()
 
-	r.Use(cors.New(cors.Config{
-		AllowOrigins: []string{
-			"http://localhost:3000",
-		},
-		AllowMethods: []string{
-			"POST",
-			"GET",
-			"PUT",
-			"DELETE",
-		},
-		AllowHeaders: []string{
-			"Access-Control-Allow-Origin",
-		},
-	}))
+	// CORSミドルウェアの設定
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"http://localhost:3000"} // 許可するオリジンのリスト
+	config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE"}
+
+	r.Use(cors.New(config))
 
 	r.POST("/users", usecase.RegisterUser)
 	r.GET("/users/:user_id", usecase.GetUser)
