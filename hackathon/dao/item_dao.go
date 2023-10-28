@@ -6,9 +6,22 @@ import (
 	"log"
 )
 
-func GetItemsDao(lessonId string, categoryId string) (*sql.Rows, error) {
-	const sql_get = "SELECT title, registrant, register_date, update_date, likes FROM item WHERE lesson_id = ? AND category_id = ?"
-	rows, err := db.Query(sql_get, lessonId, categoryId)
+func GetItemsDao(lessonId string, categoryId string, order string) (*sql.Rows, error) {
+	const sql_get = "SELECT title, registrant, registration_date, update_date, likes FROM item WHERE lesson_id = ? AND category_id = ? ORDER BY ?"
+
+	var sql_order = ""
+	switch order {
+	case "registration_order":
+		sql_order = "registration_date DESC"
+	case "update_order":
+		sql_order = "update_date DESC"
+	case "likes_order":
+		sql_order = "likes ASC"
+	default:
+		sql_order = "registration_date"
+	}
+
+	rows, err := db.Query(sql_get, lessonId, categoryId, sql_order)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
 		return nil, err
@@ -18,7 +31,7 @@ func GetItemsDao(lessonId string, categoryId string) (*sql.Rows, error) {
 }
 
 func GetItemDetailDao(itemId string) (*sql.Rows, error) {
-	const sql_get = "SELECT title, registrant, register_date, updater, update_date, description, url, likes, price FROM item WHERE item_id = ?"
+	const sql_get = "SELECT title, registrant, registration_date, updater, update_date, description, url, likes, price FROM item WHERE item_id = ?"
 	rows, err := db.Query(sql_get, itemId)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
@@ -29,7 +42,7 @@ func GetItemDetailDao(itemId string) (*sql.Rows, error) {
 }
 
 func InsertItemDao(item model.ItemForRegistration) error {
-	const sql_insert = "INSERT INTO item(item_id, title, category_id, lesson_id, registrant, registerdate, description, url, likes, price) VALUE(?,?,?,?,?,?,?,?,?,?,?,?)"
+	const sql_insert = "INSERT INTO item(item_id, title, category_id, lesson_id, registrant, registration_date, description, url, likes, price) VALUE(?,?,?,?,?,?,?,?,?,?,?,?)"
 	_, err := db.Exec(sql_insert, item.ItemId, item.Title, item.CategoryId, item.LessonId,
 		item.Registrant, item.RegisterDate, item.Description, item.Url, item.Likes, item.Price)
 	if err != nil {

@@ -12,8 +12,9 @@ import (
 func GetItems(c *gin.Context) {
 	lessonId := c.Query("lesson_id")
 	categoryId := c.Query("category_id")
+	order := c.Query("order")
 
-	rows, err := dao.GetItemsDao(lessonId, categoryId)
+	rows, err := dao.GetItemsDao(lessonId, categoryId, order)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")
