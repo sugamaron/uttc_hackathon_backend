@@ -8,7 +8,7 @@ import (
 
 // 章の名前一覧取得
 func GetLessonsDao() (*sql.Rows, error) {
-	const sql_get = "SELECT lesson_name FROM lesson"
+	const sql_get = "SELECT * FROM lesson"
 	rows, err := db.Query(sql_get)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)

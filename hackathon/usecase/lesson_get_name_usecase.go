@@ -18,18 +18,22 @@ func GetLessonName(c *gin.Context) {
 		return
 	}
 
-	var l model.Lesson
-	if err := rows.Scan(&l.LessonName); err != nil {
-		log.Printf("fail: rows.Scan, %v\n", err)
+	lessons := make([]model.Lesson, 0)
+	for rows.Next() {
+		var l model.Lesson
+		if err := rows.Scan(&l.LessonName); err != nil {
+			log.Printf("fail: rows.Scan, %v\n", err)
 
-		if err := rows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
-			log.Printf("fail: rows.Close(), %v\n", err)
+			if err := rows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
+				log.Printf("fail: rows.Close(), %v\n", err)
+			}
+			c.String(http.StatusInternalServerError, "Server Error")
+			return
 		}
-		c.String(http.StatusInternalServerError, "Server Error")
-		return
+		lessons = append(lessons, l)
 	}
 
-	bytes, err := json.Marshal(l)
+	bytes, err := json.Marshal(lessons)
 	if err != nil {
 		log.Printf("fail: json.Marshal, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")

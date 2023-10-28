@@ -18,19 +18,23 @@ func GetItemDetail(c *gin.Context) {
 		return
 	}
 
-	var i model.ItemDetail
-	if err := rows.Scan(&i.Title, &i.Registrant, &i.RegisterDate, &i.Updater, &i.UpdateDate,
-		&i.Description, &i.Url, &i.Likes, &i.Price); err != nil {
-		log.Printf("fail: rows.Scan, %v\n", err)
+	items := make([]model.ItemDetail, 0)
+	for rows.Next() {
+		var i model.ItemDetail
+		if err := rows.Scan(&i.Title, &i.Registrant, &i.RegisterDate, &i.Updater, &i.UpdateDate,
+			&i.Description, &i.Url, &i.Likes, &i.Price); err != nil {
+			log.Printf("fail: rows.Scan, %v\n", err)
 
-		if err := rows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
-			log.Printf("fail: rows.Close(), %v\n", err)
+			if err := rows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
+				log.Printf("fail: rows.Close(), %v\n", err)
+			}
+			c.String(http.StatusInternalServerError, "Server Error")
+			return
 		}
-		c.String(http.StatusInternalServerError, "Server Error")
-		return
+		items = append(items, i)
 	}
 
-	bytes, err := json.Marshal(i)
+	bytes, err := json.Marshal(items)
 	if err != nil {
 		log.Printf("fail: json.Marshal, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")

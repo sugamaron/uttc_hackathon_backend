@@ -18,18 +18,22 @@ func GetCategoryName(c *gin.Context) {
 		return
 	}
 
-	var i model.Category
-	if err := rows.Scan(&i.CategoryName); err != nil {
-		log.Printf("fail: rows.Scan, %v\n", err)
+	categories := make([]model.Category, 0)
+	for rows.Next() {
+		var i model.Category
+		if err := rows.Scan(&i.CategoryName); err != nil {
+			log.Printf("fail: rows.Scan, %v\n", err)
 
-		if err := rows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
-			log.Printf("fail: rows.Close(), %v\n", err)
+			if err := rows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
+				log.Printf("fail: rows.Close(), %v\n", err)
+			}
+			c.String(http.StatusInternalServerError, "Server Error")
+			return
 		}
-		c.String(http.StatusInternalServerError, "Server Error")
-		return
+		categories = append(categories, i)
 	}
 
-	bytes, err := json.Marshal(i)
+	bytes, err := json.Marshal(categories)
 	if err != nil {
 		log.Printf("fail: json.Marshal, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")

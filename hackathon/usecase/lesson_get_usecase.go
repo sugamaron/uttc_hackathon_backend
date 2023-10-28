@@ -20,7 +20,7 @@ func GetLessons(c *gin.Context) {
 	lessons := make([]model.Lesson, 0)
 	for rows.Next() {
 		var l model.Lesson
-		if err := rows.Scan(&l.LessonName); err != nil {
+		if err := rows.Scan(&l.LessonId, &l.LessonName); err != nil {
 			log.Printf("fail: rows.Scan, %v\n", err)
 
 			if err := rows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
