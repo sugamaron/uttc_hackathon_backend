@@ -7,7 +7,7 @@ import (
 
 // カテゴリの名前一覧取得
 func GetCategoriesDao() (*sql.Rows, error) {
-	const sql_get = "SELECT category_name FROM category"
+	const sql_get = "SELECT category_id, category_name FROM category ORDER BY category_pos ASC"
 	rows, err := db.Query(sql_get)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
