@@ -21,7 +21,7 @@ func GetItemDetail(c *gin.Context) {
 	items := make([]model.ItemDetail, 0)
 	for rows.Next() {
 		var i model.ItemDetail
-		if err := rows.Scan(&i.Title, &i.Registrant, &i.RegisterDate, &i.Updater, &i.UpdateDate,
+		if err := rows.Scan(&i.Title, &i.Registrant, &i.RegistrationDate, &i.Updater, &i.UpdateDate,
 			&i.Description, &i.Url, &i.Likes, &i.Price); err != nil {
 			log.Printf("fail: rows.Scan, %v\n", err)
 

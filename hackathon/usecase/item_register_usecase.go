@@ -31,7 +31,7 @@ func RegisterItem(c *gin.Context) {
 		return
 	}
 	newItem.ItemId = idString
-	newItem.UpdateDate = time.Now()
+	newItem.RegistrationDate = time.Now()
 	newItem.Likes = 0
 
 	//newItem.CategoryIdがカテゴリ名になっているのでidに変換する
@@ -41,7 +41,7 @@ func RegisterItem(c *gin.Context) {
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
 	}
-	
+
 	if err := categoryRows.Scan(&newItem.CategoryId); err != nil {
 		log.Printf("fail: rows.Scan, %v\n", err)
 

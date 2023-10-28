@@ -24,7 +24,7 @@ func GetItems(c *gin.Context) {
 	items := make([]model.Item, 0)
 	for rows.Next() {
 		var i model.Item
-		if err := rows.Scan(&i.Title, &i.Registrant, &i.RegisterDate, &i.UpdateDate, &i.Likes); err != nil {
+		if err := rows.Scan(&i.Title, &i.Registrant, &i.RegistrationDate, &i.UpdateDate, &i.Likes); err != nil {
 			log.Printf("fail: rows.Scan, %v\n", err)
 
 			if err := rows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
