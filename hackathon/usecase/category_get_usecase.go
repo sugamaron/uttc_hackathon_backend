@@ -20,7 +20,7 @@ func GetCategories(c *gin.Context) {
 	categories := make([]model.Category, 0)
 	for rows.Next() {
 		var i model.Category
-		if err := rows.Scan(&i.CategoryName); err != nil {
+		if err := rows.Scan(&i.CategoryId, &i.CategoryName); err != nil {
 			log.Printf("fail: rows.Scan, %v\n", err)
 
 			if err := rows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
