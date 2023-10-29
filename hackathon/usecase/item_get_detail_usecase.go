@@ -7,6 +7,7 @@ import (
 	"hackathon/model"
 	"log"
 	"net/http"
+	"time"
 )
 
 func GetItemDetail(c *gin.Context) {
@@ -21,7 +22,9 @@ func GetItemDetail(c *gin.Context) {
 	items := make([]model.ItemDetail, 0)
 	for rows.Next() {
 		var i model.ItemDetail
-		if err := rows.Scan(&i.Title, &i.Registrant, &i.RegistrationDate, &i.Updater, &i.UpdateDate,
+		//データベースからdatetime型を受け取るとき、[]uint8に変換されるので、[]uint8型を受け入れるScan用の変数dをつくる
+		var d model.RawDateData
+		if err := rows.Scan(&i.Title, &i.Registrant, &d.RegistrationDate, &i.Updater, &d.UpdateDate,
 			&i.Description, &i.Url, &i.Likes, &i.Price); err != nil {
 			log.Printf("fail: rows.Scan, %v\n", err)
 
@@ -31,6 +34,9 @@ func GetItemDetail(c *gin.Context) {
 			c.String(http.StatusInternalServerError, "Server Error")
 			return
 		}
+		//[]uint8型をtime.Time型に変換し、iに代入
+		i.RegistrationDate, err = time.Parse("2006-01-02 15:04:05", string(d.RegistrationDate))
+		i.UpdateDate, err = time.Parse("2006-01-02 15:04:05", string(d.UpdateDate))
 		items = append(items, i)
 	}
 
