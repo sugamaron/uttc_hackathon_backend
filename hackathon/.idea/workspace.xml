@@ -4,10 +4,19 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dec8e9f-b37e-40b5-b846-da6c487e4cfa" name="変更" comment="">
+    <list default="true" id="7dec8e9f-b37e-40b5-b846-da6c487e4cfa" name="変更" comment="register_date→registration_dateに変更">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1a5c04a9-80fc-41c8-9960-e441556fe63b.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1a5c04a9-80fc-41c8-9960-e441556fe63b/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1a5c04a9-80fc-41c8-9960-e441556fe63b/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1a5c04a9-80fc-41c8-9960-e441556fe63b/storage_v2/_src_/schema/test_database.iAKHIA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b66aee4b-5006-4dd3-880d-77e0d482e108.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b66aee4b-5006-4dd3-880d-77e0d482e108/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b66aee4b-5006-4dd3-880d-77e0d482e108/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dao/item_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/item_dao.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/item.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/item.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/usecase/item_get_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/item_get_usecase.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,6 +99,10 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="アプリケーションレベル" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="register_date→registration_dateに変更" />
+    <option name="LAST_COMMIT_MESSAGE" value="register_date→registration_dateに変更" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

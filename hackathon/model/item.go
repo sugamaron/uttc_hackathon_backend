@@ -3,6 +3,7 @@ package model
 import "time"
 
 type Item struct {
+	ItemId           string    `json:"item_id"`
 	Title            string    `json:"title"`
 	Registrant       string    `json:"registrant"`
 	RegistrationDate time.Time `json:"registration_date"`

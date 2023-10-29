@@ -7,8 +7,9 @@ import (
 )
 
 func GetItemsDao(lessonId string, categoryId string, order string) (*sql.Rows, error) {
-	const sql_get = "SELECT title, registrant, registration_date, update_date, likes FROM item WHERE lesson_id = ? AND category_id = ? ORDER BY ?"
+	const sql_get = "SELECT item_id, title, registrant, registration_date, update_date, likes FROM item WHERE lesson_id = ? AND category_id = ? ORDER BY ?"
 
+	//取得データの順番は文字列orderできめる
 	var sql_order = ""
 	switch order {
 	case "registration_order":
