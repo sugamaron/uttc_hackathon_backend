@@ -11,6 +11,11 @@ type Item struct {
 	Likes            int       `json:"likes"`
 }
 
+type RawDateData struct {
+	RegistrationDate []uint8
+	UpdateDate       []uint8
+}
+
 type ItemDetail struct {
 	Title            string    `json:"title"`
 	Registrant       string    `json:"registrant"`
