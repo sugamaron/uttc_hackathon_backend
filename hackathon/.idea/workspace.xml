@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dec8e9f-b37e-40b5-b846-da6c487e4cfa" name="変更" comment="register_date→registration_dateに変更">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6e0f3ec-b88b-4aee-a4ec-58a4a375d549.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6e0f3ec-b88b-4aee-a4ec-58a4a375d549.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6e0f3ec-b88b-4aee-a4ec-58a4a375d549/storage_v2/_src_/schema/hackathon.s8RLyQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f6e0f3ec-b88b-4aee-a4ec-58a4a375d549/storage_v2/_src_/schema/hackathon.s8RLyQ.meta" afterDir="false" />
+    <list default="true" id="7dec8e9f-b37e-40b5-b846-da6c487e4cfa" name="変更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/item.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/item.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/usecase/item_get_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/item_get_usecase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usecase/lesson_get_name_usecase.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +48,8 @@
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/sugawarawashou&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -96,7 +92,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="register_date→registration_dateに変更" />
-    <option name="LAST_COMMIT_MESSAGE" value="register_date→registration_dateに変更" />
+    <MESSAGE value="datetime型の受け取り方修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="datetime型の受け取り方修正" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

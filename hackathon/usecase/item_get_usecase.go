@@ -37,8 +37,8 @@ func GetItems(c *gin.Context) {
 			return
 		}
 		//[]uint8型をtime.Time型に変換し、iに代入
-		i.RegistrationDate, err = time.Parse(time.UnixDate, string(d.RegistrationDate))
-		i.UpdateDate, err = time.Parse(time.UnixDate, string(d.UpdateDate))
+		i.RegistrationDate, err = time.Parse("2006-01-02 15:04:05", string(d.RegistrationDate))
+		i.UpdateDate, err = time.Parse("2006-01-02 15:04:05", string(d.UpdateDate))
 		items = append(items, i)
 	}
 
