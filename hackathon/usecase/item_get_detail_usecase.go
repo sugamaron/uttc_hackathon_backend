@@ -2,6 +2,7 @@ package usecase
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"hackathon/dao"
 	"hackathon/model"
@@ -44,6 +45,8 @@ func GetItemDetail(c *gin.Context) {
 			i.RegistrationDate, err = time.Parse("2006-01-02 15:04:05", string(d.RegistrationDate))
 			i.UpdateDate, err = time.Parse("2006-01-02 15:04:05", string(d.UpdateDate))
 			items = append(items, i)
+			fmt.Println(rows)
+			fmt.Println(items)
 		}
 	case "book":
 		//カテゴリが技術書の場合、データベースからpriceも取得
