@@ -16,7 +16,19 @@ type RawDateData struct {
 	UpdateDate       []uint8
 }
 
-type ItemDetail struct {
+type ItemDetailBlog struct {
+	Title            string    `json:"title"`
+	Registrant       string    `json:"registrant"`
+	RegistrationDate time.Time `json:"registration_date"`
+	Updater          string    `json:"updater"`
+	UpdateDate       time.Time `json:"update_date"`
+	Description      string    `json:"description"`
+	Url              string    `json:"url"`
+	Likes            int       `json:"likes"`
+}
+
+// bookカテゴリのアイテム詳細データだけpriceがある
+type ItemDetailBook struct {
 	Title            string    `json:"title"`
 	Registrant       string    `json:"registrant"`
 	RegistrationDate time.Time `json:"registration_date"`
@@ -26,6 +38,17 @@ type ItemDetail struct {
 	Url              string    `json:"url"`
 	Likes            int       `json:"likes"`
 	Price            int       `json:"price"`
+}
+
+type ItemDetailMovie struct {
+	Title            string    `json:"title"`
+	Registrant       string    `json:"registrant"`
+	RegistrationDate time.Time `json:"registration_date"`
+	Updater          string    `json:"updater"`
+	UpdateDate       time.Time `json:"update_date"`
+	Description      string    `json:"description"`
+	Url              string    `json:"url"`
+	Likes            int       `json:"likes"`
 }
 
 type ItemForRegistration struct {
