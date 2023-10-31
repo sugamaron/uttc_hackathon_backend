@@ -46,15 +46,16 @@ func RegisterItem(c *gin.Context) {
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
 	}
+	for categoryRows.Next() {
+		if err := categoryRows.Scan(&newItem.CategoryId); err != nil {
+			log.Printf("fail: rows.Scan, %v\n", err)
 
-	if err := categoryRows.Scan(&newItem.CategoryId); err != nil {
-		log.Printf("fail: rows.Scan, %v\n", err)
-
-		if err := categoryRows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
-			log.Printf("fail: rows.Close(), %v\n", err)
+			if err := categoryRows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
+				log.Printf("fail: rows.Close(), %v\n", err)
+			}
+			c.String(http.StatusInternalServerError, "Server Error")
+			return
 		}
-		c.String(http.StatusInternalServerError, "Server Error")
-		return
 	}
 
 	//newItem.lessonIdが章の名前になっているのでidに変換する
@@ -64,14 +65,16 @@ func RegisterItem(c *gin.Context) {
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
 	}
-	if err := lessonRows.Scan(&newItem.LessonId); err != nil {
-		log.Printf("fail: rows.Scan, %v\n", err)
+	for lessonRows.Next() {
+		if err := lessonRows.Scan(&newItem.LessonId); err != nil {
+			log.Printf("fail: rows.Scan, %v\n", err)
 
-		if err := categoryRows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
-			log.Printf("fail: rows.Close(), %v\n", err)
+			if err := categoryRows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
+				log.Printf("fail: rows.Close(), %v\n", err)
+			}
+			c.String(http.StatusInternalServerError, "Server Error")
+			return
 		}
-		c.String(http.StatusInternalServerError, "Server Error")
-		return
 	}
 
 	if err := dao.InsertItemDao(newItem); err != nil {
