@@ -7,22 +7,23 @@ import (
 )
 
 func GetItemsDao(lessonId string, categoryId string, order string) (*sql.Rows, error) {
-	const sql_get = "SELECT item_id, title, registrant, registration_date, update_date, likes FROM item WHERE lesson_id = ? AND category_id = ? ORDER BY ?"
+	const sql_get = "SELECT item_id, title, registrant, registration_date, update_date, likes FROM item WHERE lesson_id = ? AND category_id = ? ORDER BY"
 
 	//取得データの順番は文字列orderできめる
-	var sql_order = ""
+	var sql_order string
 	switch order {
-	case "registration_order":
+	case "registration":
 		sql_order = "registration_date DESC"
-	case "update_order":
+	case "update":
 		sql_order = "update_date DESC"
-	case "likes_order":
+	case "likes":
 		sql_order = "likes ASC"
 	default:
-		sql_order = "registration_date"
+		sql_order = "registration_date DESC"
 	}
+	query := sql_get + " " + sql_order
 
-	rows, err := db.Query(sql_get, lessonId, categoryId, sql_order)
+	rows, err := db.Query(query, lessonId, categoryId)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
 		return nil, err
