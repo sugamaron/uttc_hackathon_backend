@@ -2,7 +2,6 @@ package usecase
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/oklog/ulid/v2"
 	"hackathon/dao"
@@ -41,9 +40,9 @@ func RegisterItem(c *gin.Context) {
 	newItem.Likes = 0
 
 	//newItem.CategoryIdがカテゴリ名になっているのでidに変換する
-	fmt.Println(newItem.CategoryId)
+	log.Println(newItem.CategoryId)
 	categoryRows, err := dao.GetCategoryIdDao(newItem.CategoryId)
-	fmt.Println(categoryRows)
+	log.Println(categoryRows)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")
@@ -60,7 +59,7 @@ func RegisterItem(c *gin.Context) {
 			return
 		}
 	}
-	fmt.Println(newItem.CategoryId)
+	log.Println(newItem.CategoryId)
 
 	//newItem.lessonIdが章の名前になっているのでidに変換する
 	lessonRows, err := dao.GetLessonIdDao(newItem.LessonId)
