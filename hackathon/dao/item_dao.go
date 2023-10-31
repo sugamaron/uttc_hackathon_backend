@@ -44,9 +44,9 @@ func GetItemDetailDao(itemId string) (*sql.Rows, error) {
 }
 
 func InsertItemDao(item model.ItemForRegistration) error {
-	const sql_insert = "INSERT INTO item(item_id, title, category_id, lesson_id, registrant, registration_date, description, url, likes) VALUE(?,?,?,?,?,?,?,?,?,?,?)"
+	const sql_insert = "INSERT INTO item(item_id, title, category_id, lesson_id, registrant, registration_date, updater, update_date, description, url, likes) VALUE(?,?,?,?,?,?,?,?,?,?,?)"
 	_, err := db.Exec(sql_insert, item.ItemId, item.Title, item.CategoryId, item.LessonId,
-		item.Registrant, item.RegistrationDate, item.Description, item.Url, item.Likes)
+		item.Registrant, item.RegistrationDate, item.Updater, item.UpdateDate, item.Description, item.Url, item.Likes)
 	if err != nil {
 		log.Printf("fail: db.Exec, %v\n", err)
 		return err
