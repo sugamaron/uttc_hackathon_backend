@@ -48,9 +48,9 @@ func InsertUserDao(user model.User) error {
 	}
 }
 
-func GetUserDao(user_id string) (*sql.Rows, error) {
-	const sql_get = "SELECT user_id, user_name, email, term FROM user WHERE user_id = ?"
-	rows, err := db.Query(sql_get, user_id)
+func GetUserDao(email string) (*sql.Rows, error) {
+	const sql_get = "SELECT user_id, user_name, email, term FROM user WHERE email = ?"
+	rows, err := db.Query(sql_get, email)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
 		return nil, err

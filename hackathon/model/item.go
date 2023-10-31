@@ -52,8 +52,6 @@ type ItemForUpdate struct {
 	UpdateDate  time.Time `json:"update_date"`
 	Description string    `json:"description"`
 	Url         string    `json:"url"`
-	Likes       int       `json:"likes"`
-	Price       int       `json:"price"`
 }
 
 type LikeNum struct {

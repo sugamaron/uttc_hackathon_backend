@@ -17,7 +17,7 @@ func GetItemsDao(lessonId string, categoryId string, order string) (*sql.Rows, e
 	case "update":
 		sql_order = "update_date DESC"
 	case "likes":
-		sql_order = "likes ASC"
+		sql_order = "likes DESC"
 	default:
 		sql_order = "registration_date DESC"
 	}
@@ -45,39 +45,6 @@ func GetItemDetailDao(itemId string) (*sql.Rows, error) {
 
 func GetBookDetailDao(itemId string) (*sql.Rows, error) {
 	const sql_get = "SELECT price FROM book WHERE item_id = ?"
-	rows, err := db.Query(sql_get, itemId)
-	if err != nil {
-		log.Printf("fail: db.Query, %v\n", err)
-		return nil, err
-	} else {
-		return rows, nil
-	}
-}
-
-func GetItemDetailBlogDao(itemId string) (*sql.Rows, error) {
-	const sql_get = "SELECT title, registrant, registration_date, updater, update_date, description, url, likes FROM item WHERE item_id = ?"
-	rows, err := db.Query(sql_get, itemId)
-	if err != nil {
-		log.Printf("fail: db.Query, %v\n", err)
-		return nil, err
-	} else {
-		return rows, nil
-	}
-}
-
-func GetItemDetailBook(itemId string) (*sql.Rows, error) {
-	const sql_get = "SELECT title, registrant, registration_date, updater, update_date, description, url, likes, price FROM item WHERE item_id = ?"
-	rows, err := db.Query(sql_get, itemId)
-	if err != nil {
-		log.Printf("fail: db.Query, %v\n", err)
-		return nil, err
-	} else {
-		return rows, nil
-	}
-}
-
-func GetItemDetailMovie(itemId string) (*sql.Rows, error) {
-	const sql_get = "SELECT title, registrant, registration_date, updater, update_date, description, url, likes FROM item WHERE item_id = ?"
 	rows, err := db.Query(sql_get, itemId)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
@@ -127,20 +94,6 @@ func UpdateItemDao(itemId string, newItem model.ItemForUpdate) error {
 	}
 	if newItem.Url != "" {
 		_, err := db.Exec("UPDATE item SET url=? WHERE item_id = ?", newItem.Url, itemId)
-		if err != nil {
-			log.Printf("fail: db.Exec, %v\n", err)
-			return err
-		}
-	}
-	if newItem.Likes != -1 {
-		_, err := db.Exec("UPDATE item SET likes=? WHERE item_id = ?", newItem.Likes, itemId)
-		if err != nil {
-			log.Printf("fail: db.Exec, %v\n", err)
-			return err
-		}
-	}
-	if newItem.Price != -1 {
-		_, err := db.Exec("UPDATE item SET price=? WHERE item_id = ?", newItem.Price, itemId)
 		if err != nil {
 			log.Printf("fail: db.Exec, %v\n", err)
 			return err

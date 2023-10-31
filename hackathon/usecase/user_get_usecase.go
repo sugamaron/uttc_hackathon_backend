@@ -10,8 +10,8 @@ import (
 )
 
 func GetUser(c *gin.Context) {
-	user_id := c.Param("user_id")
-	rows, err := dao.GetUserDao(user_id)
+	email := c.Param("email")
+	rows, err := dao.GetUserDao(email)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")

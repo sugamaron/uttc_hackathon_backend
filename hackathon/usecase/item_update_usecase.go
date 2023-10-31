@@ -6,7 +6,6 @@ import (
 	"hackathon/model"
 	"log"
 	"net/http"
-	"strconv"
 	"time"
 )
 
@@ -25,19 +24,6 @@ func UpdateItem(c *gin.Context) {
 	newItem.Description = newDescription
 	newUrl := c.Query("url")
 	newItem.Url = newUrl
-	newLikes, err := strconv.Atoi(c.Query("like"))
-	if err != nil {
-		newItem.Likes = -1 //いいね数が更新されない場合、
-		// item.daoで更新されなことが判別できるように、newItem.Likesは-1とする。
-	} else {
-		newItem.Likes = newLikes
-	}
-	newPrice, err := strconv.Atoi(c.Query("price"))
-	if err != nil {
-		newItem.Price = -1 //いいね数と同様
-	} else {
-		newItem.Price = newPrice
-	}
 
 	if err := dao.UpdateItemDao(itemId, newItem); err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
