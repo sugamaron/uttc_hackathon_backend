@@ -31,7 +31,12 @@ func RegisterItem(c *gin.Context) {
 		return
 	}
 	newItem.ItemId = idString
-	newItem.RegistrationDate = time.Now()
+	jst, err := time.LoadLocation("Asia/Tokyo")
+	if err != nil {
+		panic(err)
+	}
+	newItem.RegistrationDate = time.Now().In(jst)
+	newItem.UpdateDate = time.Now().In(jst)
 	newItem.Likes = 0
 
 	//newItem.CategoryIdがカテゴリ名になっているのでidに変換する
@@ -73,7 +78,14 @@ func RegisterItem(c *gin.Context) {
 		log.Printf("fail: db.Exec, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
-	} else {
-		c.JSON(http.StatusOK, gin.H{"message": "success", "data": newItem})
 	}
+	//カテゴリが技術書の場合のみ、bookテーブルに価格の情報をいれる
+	if newItem.CategoryId == "book" {
+		if err := dao.InsertItemBookDao(newItem.ItemId, newItem.Price); err != nil {
+			log.Printf("fail: db.Exec, %v\n", err)
+			c.String(http.StatusInternalServerError, "Server Error")
+			return
+		}
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "success", "data": newItem})
 }

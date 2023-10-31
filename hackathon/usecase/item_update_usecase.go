@@ -28,7 +28,11 @@ func UpdateItem(c *gin.Context) {
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
 	}
-	newItem.UpdateDate = time.Now()
+	jst, err := time.LoadLocation("Asia/Tokyo")
+	if err != nil {
+		panic(err)
+	}
+	newItem.UpdateDate = time.Now().In(jst)
 
 	if err := dao.UpdateItemDao(itemId, newItem); err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
