@@ -7,12 +7,7 @@
     <list default="true" id="7dec8e9f-b37e-40b5-b846-da6c487e4cfa" name="変更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/item_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/item_dao.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/user_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/user_dao.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/item.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/item.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/usecase/item_update_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/item_update_usecase.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usecase/user_get_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/user_get_usecase.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +100,8 @@
     <MESSAGE value="bookテーブル作成" />
     <MESSAGE value="getbookdetailのapi変更" />
     <MESSAGE value="GetItemsDaoのorder部分修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="GetItemsDaoのorder部分修正" />
+    <MESSAGE value="getuserでemailで取得できるようにする" />
+    <option name="LAST_COMMIT_MESSAGE" value="getuserでemailで取得できるようにする" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
