@@ -17,18 +17,6 @@ func GetCategoriesDao() (*sql.Rows, error) {
 	}
 }
 
-// 特定のカテゴリの名前取得
-func GetCategoryNameDao(categoryId string) (*sql.Rows, error) {
-	const sql_get = "SELECT category_name FROM category WHERE category_id = ?"
-	rows, err := db.Query(sql_get, categoryId)
-	if err != nil {
-		log.Printf("fail: db.Query, %v\n", err)
-		return nil, err
-	} else {
-		return rows, nil
-	}
-}
-
 // カテゴリ名からカテゴリid取得
 func GetCategoryIdDao(categoryName string) (*sql.Rows, error) {
 	const sql_get = "SELECT category_id FROM category WHERE category_name = ?"
