@@ -2,13 +2,11 @@ package usecase
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"hackathon/dao"
 	"hackathon/model"
 	"log"
 	"net/http"
-	"time"
 )
 
 func GetItemDetail(c *gin.Context) {
@@ -36,12 +34,10 @@ func GetItemDetail(c *gin.Context) {
 			c.String(http.StatusInternalServerError, "Server Error")
 			return
 		}
-		//[]uint8型をtime.Time型に変換し、iに代入
-		i.RegistrationDate, err = time.Parse("2006-01-02 15:04:05", string(d.RegistrationDate))
-		i.UpdateDate, err = time.Parse("2006-01-02 15:04:05", string(d.UpdateDate))
+		//[]uint8型を文字列に変換
+		i.RegistrationDate = string(d.RegistrationDate)
+		i.UpdateDate = string(d.UpdateDate)
 		items = append(items, i)
-		fmt.Println(rows)
-		fmt.Println(items)
 	}
 
 	bytes, err := json.Marshal(items)
