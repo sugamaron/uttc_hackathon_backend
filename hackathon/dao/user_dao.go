@@ -80,16 +80,14 @@ func UpdateUserDao(userId string, newUser model.User) error {
 			return nil
 		}
 	}
-	if newUser.Term != -1 {
-		_, err := db.Exec("UPDATE user SET term=? WHERE user_id = ?", newUser.Term, userId)
-		if err != nil {
-			log.Printf("fail: db.Exec, %v\n", err)
-			return err
-		} else {
-			return nil
-		}
+
+	_, err := db.Exec("UPDATE user SET term=? WHERE user_id = ?", newUser.Term, userId)
+	if err != nil {
+		log.Printf("fail: db.Exec, %v\n", err)
+		return err
+	} else {
+		return nil
 	}
-	return nil
 }
 
 // Ctrl+CでHTTPサーバー停止時にDBをクローズする

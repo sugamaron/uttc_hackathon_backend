@@ -11,7 +11,7 @@ func GetRouter() *gin.Engine {
 
 	// CORSミドルウェアの設定
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:3000"} // 許可するオリジンのリスト
+	config.AllowOrigins = []string{"http://localhost:3000", "https://uttc-hackathon-frontend-jade.vercel.app"} // 許可するオリジンのリスト
 	config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE"}
 
 	r.Use(cors.New(config))
