@@ -70,15 +70,26 @@ func DeleteUserDao(user_id string) error {
 	}
 }
 
-func UpdateUserDao(userId string, updateStr string) error {
-	const sql_update = "UPDATE user SET ? WHERE user_id = ?"
-	_, err := db.Exec(sql_update, updateStr, userId)
-	if err != nil {
-		log.Printf("fail: db.Exec, %v\n", err)
-		return err
-	} else {
-		return nil
+func UpdateUserDao(userId string, newUser model.User) error {
+	if newUser.UserName != "" {
+		_, err := db.Exec("UPDATE user SET user_name=? WHERE user_id = ?", newUser.UserName, userId)
+		if err != nil {
+			log.Printf("fail: db.Exec, %v\n", err)
+			return err
+		} else {
+			return nil
+		}
 	}
+	if newUser.Term != -1 {
+		_, err := db.Exec("UPDATE user SET term=? WHERE user_id = ?", newUser.Term, userId)
+		if err != nil {
+			log.Printf("fail: db.Exec, %v\n", err)
+			return err
+		} else {
+			return nil
+		}
+	}
+	return nil
 }
 
 // Ctrl+CでHTTPサーバー停止時にDBをクローズする
