@@ -7,7 +7,6 @@ import (
 	"hackathon/model"
 	"log"
 	"net/http"
-	"time"
 )
 
 func GetItems(c *gin.Context) {
@@ -36,9 +35,9 @@ func GetItems(c *gin.Context) {
 			c.String(http.StatusInternalServerError, "Server Error")
 			return
 		}
-		//[]uint8型をtime.Time型に変換し、iに代入
-		i.RegistrationDate, err = time.Parse("2006-01-02 15:04:05", string(d.RegistrationDate))
-		i.UpdateDate, err = time.Parse("2006-01-02 15:04:05", string(d.UpdateDate))
+		//[]uin8から文字列型に変換
+		i.RegistrationDate = string(d.RegistrationDate)
+		i.UpdateDate = string(d.UpdateDate)
 		items = append(items, i)
 	}
 
@@ -49,4 +48,5 @@ func GetItems(c *gin.Context) {
 		return
 	}
 	c.Data(http.StatusOK, "application/json; charset=utf-8", bytes)
+
 }
