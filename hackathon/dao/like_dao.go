@@ -29,10 +29,22 @@ func DeleteLikeDao(userId string, itemId string) error {
 	}
 }
 
-// いいね数数える関数
+// あるアイテムのいいね数を数える関数
 func CountLikeDao(itemId string) (*sql.Rows, error) {
 	const sql_count = "SELECT COUNT(*) FROM likes WHERE item_id = ?"
 	rows, err := db.Query(sql_count, itemId)
+	if err != nil {
+		log.Printf("fail: db.Query, %v\n", err)
+		return nil, err
+	} else {
+		return rows, nil
+	}
+}
+
+// ユーザーが特定のアイテムにいいねしているかどうか判定
+func GetLikeDao(userId string, itemId string) (*sql.Rows, error) {
+	const sql_count = "SELECT COUNT(*) FROM likes WHERE user_id = ? AND item_id = ?"
+	rows, err := db.Query(sql_count, userId, itemId)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
 		return nil, err
