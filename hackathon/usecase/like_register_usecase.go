@@ -11,6 +11,7 @@ import (
 func RegisterLike(c *gin.Context) {
 	userId := c.Query("user_id")
 	itemId := c.Query("item_id")
+	log.Println("register_test")
 
 	if err := dao.InsertLikeDao(userId, itemId); err != nil {
 		log.Printf("fail: db.Exec, %v\n", err)
