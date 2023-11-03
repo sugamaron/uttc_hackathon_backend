@@ -1,37 +1,52 @@
 package usecase
 
 import (
-	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"hackathon/dao"
 	"hackathon/model"
-	"io"
 	"log"
 	"net/http"
 )
 
-// リクエストのデータ量が少ないからパスパラメータで送信
-// ファイルの量が少なくて済む
 func RegisterLike(c *gin.Context) {
-	body, err := io.ReadAll(c.Request.Body)
-	if err != nil {
-		log.Printf("fail: io.ReadALL, %v\n", err)
-		c.String(http.StatusInternalServerError, "Server Error")
-		return
-	}
+	userId := c.Query("user_id")
+	itemId := c.Query("item_id")
 
-	var l model.Like
-	if err := json.Unmarshal(body, &l); err != nil {
-		log.Printf("fail:json.Unmarshal , %v\n", err)
-		c.String(http.StatusInternalServerError, "Server Error")
-		return
-	}
-
-	if err := dao.InsertLikeDao(l); err != nil {
+	if err := dao.InsertLikeDao(userId, itemId); err != nil {
 		log.Printf("fail: db.Exec, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
-	} else {
-		c.JSON(http.StatusOK, gin.H{"message": "success", "date": l})
 	}
+
+	//以下、アイテムテーブルのいいね数を更新する
+	//アイテムのいいね数を数える
+	rows, err := dao.CountLikeDao(itemId)
+	if err != nil {
+		log.Printf("fail: db.Query, %v\n", err)
+		c.String(http.StatusInternalServerError, "Server Error")
+		return
+	}
+	var likeNumber int
+	for rows.Next() {
+		var n model.NumberOfLike
+		if err := rows.Scan(&n.LikeNum); err != nil {
+			log.Printf("fail: rows.Scan, %v\n", err)
+
+			if err := rows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
+				log.Printf("fail: rows.Close(), %v\n", err)
+			}
+			c.String(http.StatusInternalServerError, "Server Error")
+			return
+		}
+		likeNumber = n.LikeNum
+	}
+	//アイテムテーブルのいいね数更新
+	if err := dao.UpdateLikesDao(itemId, likeNumber); err != nil {
+		log.Printf("fail: db.Exec, %v\n", err)
+		c.String(http.StatusInternalServerError, "Server Error")
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "success", "user": userId, "item": itemId})
+
 }

@@ -96,3 +96,13 @@ func UpdateItemDao(itemId string, newItem model.ItemForUpdate) error {
 	}
 	return nil
 }
+
+func UpdateLikesDao(itemId string, likeNum int) error {
+	const sql_update = "UPDATE item SET likes = ? WHERE item_id = ?"
+	_, err := db.Exec(sql_update, likeNum, itemId)
+	if err != nil {
+		log.Printf("fail: db.Exec, %v\n", err)
+		return err
+	}
+	return nil
+}

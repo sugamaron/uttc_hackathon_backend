@@ -29,7 +29,7 @@ func GetRouter() *gin.Engine {
 	r.PUT("/items/:item_id", usecase.UpdateItem)
 	r.DELETE("/items/:item_id", usecase.DeleteItem)
 	r.POST("/likes", usecase.RegisterLike)
-	r.DELETE("/likes/:user_id/:item_id", usecase.DeleteLike)
+	r.DELETE("/likes", usecase.DeleteLike)
 
 	return r
 }
