@@ -58,6 +58,12 @@ type LikeNum struct {
 	LikeNumStr string `json:"like_num_str"`
 }
 
-type LikedItemId struct {
-	ItemId string `json:"item_id"`
+type LikedItem struct {
+	ItemId           string `json:"item_id"`
+	Title            string `json:"title"`
+	Registrant       string `json:"registrant"`
+	RegistrationDate string `json:"registration_date"`
+	UpdateDate       string `json:"update_date"`
+	Likes            int    `json:"likes"`
+	CategoryId       string `json:"category_id"`
 }

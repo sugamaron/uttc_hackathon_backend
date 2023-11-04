@@ -43,12 +43,12 @@ func GetLikedItems(c *gin.Context) {
 		return
 	}
 
-	items := make([]model.Item, 0)
+	items := make([]model.LikedItem, 0)
 	for rows.Next() {
-		var i model.Item
+		var i model.LikedItem
 		//データベースからdatetime型を受け取るとき、[]uint8に変換されるので、[]uint8型を受け入れるScan用の変数dをつくる
 		var d model.RawDateData
-		if err := rows.Scan(&i.ItemId, &i.Title, &i.Registrant, &d.RegistrationDate, &d.UpdateDate, &i.Likes); err != nil {
+		if err := rows.Scan(&i.ItemId, &i.Title, &i.Registrant, &d.RegistrationDate, &d.UpdateDate, &i.Likes, &i.CategoryId); err != nil {
 			log.Printf("fail: rows.Scan, %v\n", err)
 
 			if err := rows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
