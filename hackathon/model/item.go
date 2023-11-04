@@ -57,3 +57,7 @@ type ItemForUpdate struct {
 type LikeNum struct {
 	LikeNumStr string `json:"like_num_str"`
 }
+
+type LikedItemId struct {
+	ItemId string `json:"item_id"`
+}

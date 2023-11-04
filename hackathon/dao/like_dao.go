@@ -53,3 +53,15 @@ func GetLikeDao(userId string, itemId string) (*sql.Rows, error) {
 		return rows, nil
 	}
 }
+
+// あるユーザーがいいねしたアイテムのid一覧取得
+func GetLikedItemsIdDao(userId string) (*sql.Rows, error) {
+	const sql_get = "SELECT item_id FROM likes WHERE user_id = ?"
+	rows, err := db.Query(sql_get, userId)
+	if err != nil {
+		log.Printf("fail: db.Query, %v\n", err)
+		return nil, err
+	} else {
+		return rows, nil
+	}
+}
