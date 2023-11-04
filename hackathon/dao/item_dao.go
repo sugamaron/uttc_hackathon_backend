@@ -118,7 +118,7 @@ func UpdateLikesDao(itemId string, likeNum int) error {
 //	}
 
 func GetLikedItemsDao(userId string) (*sql.Rows, error) {
-	const sql_get = "SELECT item.item_id, title, registrant, registration_date, update_date, likes FROM item INNER JOIN likes ON item.item_id = likes.item_id WHERE likes.user_id = ?"
+	const sql_get = "SELECT item.item_id, title, registrant, registration_date, update_date, likes, category_id FROM item INNER JOIN likes ON item.item_id = likes.item_id WHERE likes.user_id = ?"
 	rows, err := db.Query(sql_get, userId)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
