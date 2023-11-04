@@ -36,14 +36,17 @@ func GetLike(c *gin.Context) {
 	}
 
 	//ユーザーがアイテムにいいねしていたらtrue、そうでなければfalseを返す
-	var result bool
+	type Res struct {
+		Result bool `json:"result"`
+	}
+	var res Res
 	if likeNumber == 1 {
-		result = true
+		res.Result = true
 	} else {
-		result = false
+		res.Result = false
 	}
 
-	bytes, err := json.Marshal(result)
+	bytes, err := json.Marshal(res)
 	if err != nil {
 		log.Printf("fail: json.Marshal, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")

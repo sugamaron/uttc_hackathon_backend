@@ -29,6 +29,7 @@ func RegisterLike(c *gin.Context) {
 		return
 	}
 
+	//いいねテーブルに誰が何のアイテムにいいねしたか保存
 	if err := dao.InsertLikeDao(like); err != nil {
 		log.Printf("fail: db.Exec, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")
