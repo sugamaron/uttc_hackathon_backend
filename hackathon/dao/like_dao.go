@@ -2,13 +2,14 @@ package dao
 
 import (
 	"database/sql"
+	"hackathon/model"
 	"log"
 )
 
 // 誰が何のアイテムにいいねしたかをlikeテーブルに挿入
-func InsertLikeDao(userId string, itemId string) error {
+func InsertLikeDao(like model.Like) error {
 	const sql_insert = "INSERT INTO likes(user_id, item_id) VALUE(?, ?)"
-	_, err := db.Exec(sql_insert, userId, itemId)
+	_, err := db.Exec(sql_insert, like.UserId, like.ItemId)
 	if err != nil {
 		log.Printf("fail: db.Exec, %v\n", err)
 		return err

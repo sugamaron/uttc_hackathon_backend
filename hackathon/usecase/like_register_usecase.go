@@ -1,19 +1,35 @@
 package usecase
 
 import (
+	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"hackathon/dao"
 	"hackathon/model"
+	"io"
 	"log"
 	"net/http"
 )
 
 func RegisterLike(c *gin.Context) {
-	userId := c.Query("user_id")
-	itemId := c.Query("item_id")
-	log.Println("register_test")
+	//userId := c.Query("user_id")
+	//itemId := c.Query("item_id")
 
-	if err := dao.InsertLikeDao(userId, itemId); err != nil {
+	// リクエストボディ読み込む
+	body, err := io.ReadAll(c.Request.Body)
+	if err != nil {
+		log.Printf("fail: io.ReadALL, %v\n", err)
+		c.String(http.StatusInternalServerError, "Server Error")
+		return
+	}
+
+	var like model.Like
+	if err := json.Unmarshal(body, &like); err != nil {
+		log.Printf("fail:json.Unmarshal , %v\n", err)
+		c.String(http.StatusInternalServerError, "Server Error")
+		return
+	}
+
+	if err := dao.InsertLikeDao(like); err != nil {
 		log.Printf("fail: db.Exec, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
@@ -21,7 +37,7 @@ func RegisterLike(c *gin.Context) {
 
 	//以下、アイテムテーブルのいいね数を更新する
 	//アイテムのいいね数を数える
-	rows, err := dao.CountLikeDao(itemId)
+	rows, err := dao.CountLikeDao(like.ItemId)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")
@@ -42,12 +58,12 @@ func RegisterLike(c *gin.Context) {
 		likeNumber = n.LikeNum
 	}
 	//アイテムテーブルのいいね数更新
-	if err := dao.UpdateLikesDao(itemId, likeNumber); err != nil {
+	if err := dao.UpdateLikesDao(like.ItemId, likeNumber); err != nil {
 		log.Printf("fail: db.Exec, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "success", "user": userId, "item": itemId})
+	c.JSON(http.StatusOK, gin.H{"message": "success", "data": like})
 
 }
