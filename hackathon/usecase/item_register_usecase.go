@@ -2,7 +2,6 @@ package usecase
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/oklog/ulid/v2"
 	"hackathon/dao"
@@ -52,7 +51,6 @@ func RegisterItem(c *gin.Context) {
 	newItem.RegistrationDate = time.Now().In(jst)
 	newItem.UpdateDate = time.Now().In(jst)
 	newItem.Likes = 0
-	fmt.Println(newItem.RegistrationDate)
 
 	if err := dao.InsertItemDao(newItem); err != nil {
 		log.Printf("fail: db.Exec, %v\n", err)

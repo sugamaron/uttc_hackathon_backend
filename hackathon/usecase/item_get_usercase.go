@@ -53,6 +53,9 @@ func GetItems(c *gin.Context) {
 		}
 		i.RegistrationDate = registrationDateUTC.In(jst)
 
+		i.UpdateDate = string(d.UpdateDate)
+		items = append(items, i)
+
 	}
 
 	bytes, err := json.Marshal(items)
