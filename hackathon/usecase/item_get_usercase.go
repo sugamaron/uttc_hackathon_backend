@@ -7,6 +7,7 @@ import (
 	"hackathon/model"
 	"log"
 	"net/http"
+	"time"
 )
 
 func GetItems(c *gin.Context) {
@@ -36,9 +37,22 @@ func GetItems(c *gin.Context) {
 			return
 		}
 		//[]uin8から文字列型に変換
-		i.RegistrationDate = string(d.RegistrationDate)
-		i.UpdateDate = string(d.UpdateDate)
-		items = append(items, i)
+		//i.RegistrationDate = string(d.RegistrationDate)
+		//i.UpdateDate = string(d.UpdateDate)
+		//items = append(items, i)
+
+		//uint8→string→time.Time(UTC)→jst
+		jst, err := time.LoadLocation("Asia/Tokyo")
+		if err != nil {
+			panic(err)
+		}
+		registrationDateUTC, err := time.Parse("2006-01-02 15:04:05", string(d.RegistrationDate))
+		if err != nil {
+			log.Printf("fail: time.Parse, %v\n", err)
+			return
+		}
+		i.RegistrationDate = registrationDateUTC.In(jst)
+
 	}
 
 	bytes, err := json.Marshal(items)

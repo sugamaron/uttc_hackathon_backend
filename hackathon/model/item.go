@@ -3,12 +3,12 @@ package model
 import "time"
 
 type Item struct {
-	ItemId           string `json:"item_id"`
-	Title            string `json:"title"`
-	Registrant       string `json:"registrant"`
-	RegistrationDate string `json:"registration_date"`
-	UpdateDate       string `json:"update_date"`
-	Likes            int    `json:"likes"`
+	ItemId           string    `json:"item_id"`
+	Title            string    `json:"title"`
+	Registrant       string    `json:"registrant"`
+	RegistrationDate time.Time `json:"registration_date"`
+	UpdateDate       string    `json:"update_date"`
+	Likes            int       `json:"likes"`
 }
 
 type RawDateData struct {
