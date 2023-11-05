@@ -7,7 +7,7 @@ type Item struct {
 	Title            string    `json:"title"`
 	Registrant       string    `json:"registrant"`
 	RegistrationDate time.Time `json:"registration_date"`
-	UpdateDate       string    `json:"update_date"`
+	UpdateDate       time.Time `json:"update_date"`
 	Likes            int       `json:"likes"`
 }
 
@@ -17,14 +17,14 @@ type RawDateData struct {
 }
 
 type ItemDetail struct {
-	Title            string `json:"title"`
-	Registrant       string `json:"registrant"`
-	RegistrationDate string `json:"registration_date"`
-	Updater          string `json:"updater"`
-	UpdateDate       string `json:"update_date"`
-	Description      string `json:"description"`
-	Url              string `json:"url"`
-	Likes            int    `json:"likes"`
+	Title            string    `json:"title"`
+	Registrant       string    `json:"registrant"`
+	RegistrationDate time.Time `json:"registration_date"`
+	Updater          string    `json:"updater"`
+	UpdateDate       time.Time `json:"update_date"`
+	Description      string    `json:"description"`
+	Url              string    `json:"url"`
+	Likes            int       `json:"likes"`
 }
 
 type BookDetail struct {
@@ -59,11 +59,11 @@ type LikeNum struct {
 }
 
 type LikedItem struct {
-	ItemId           string `json:"item_id"`
-	Title            string `json:"title"`
-	Registrant       string `json:"registrant"`
-	RegistrationDate string `json:"registration_date"`
-	UpdateDate       string `json:"update_date"`
-	Likes            int    `json:"likes"`
-	CategoryId       string `json:"category_id"`
+	ItemId           string    `json:"item_id"`
+	Title            string    `json:"title"`
+	Registrant       string    `json:"registrant"`
+	RegistrationDate time.Time `json:"registration_date"`
+	UpdateDate       time.Time `json:"update_date"`
+	Likes            int       `json:"likes"`
+	CategoryId       string    `json:"category_id"`
 }

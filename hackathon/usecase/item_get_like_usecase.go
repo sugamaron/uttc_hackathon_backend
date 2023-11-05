@@ -7,6 +7,7 @@ import (
 	"hackathon/model"
 	"log"
 	"net/http"
+	"time"
 )
 
 func GetLikedItems(c *gin.Context) {
@@ -34,9 +35,26 @@ func GetLikedItems(c *gin.Context) {
 			c.String(http.StatusInternalServerError, "Server Error")
 			return
 		}
-		//[]uin8から文字列型に変換
-		i.RegistrationDate = string(d.RegistrationDate)
-		i.UpdateDate = string(d.UpdateDate)
+
+		//登録日、更新日を型変換　[]uint8→string→time.Time(UTC)→time.Time(jst)
+		jst, err := time.LoadLocation("Asia/Tokyo")
+		if err != nil {
+			panic(err)
+		}
+		registrationDateUTC, err := time.Parse("2006-01-02 15:04:05", string(d.RegistrationDate))
+		if err != nil {
+			log.Printf("fail: time.Parse, %v\n", err)
+			return
+		}
+		i.RegistrationDate = registrationDateUTC.In(jst)
+
+		updateDateUTC, err := time.Parse("2006-01-02 15:04:05", string(d.UpdateDate))
+		if err != nil {
+			log.Printf("fail: time.Parse, %v\n", err)
+			return
+		}
+		i.UpdateDate = updateDateUTC.In(jst)
+
 		items = append(items, i)
 	}
 
