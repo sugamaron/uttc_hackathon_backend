@@ -12,29 +12,6 @@ import (
 func GetLikedItems(c *gin.Context) {
 	userId := c.Query("user_id")
 
-	////あるユーザーがいいねしたアイテムのid一覧取得
-	//rows1, err := dao.GetLikedItemsIdDao(userId)
-	//if err != nil {
-	//	log.Printf("fail: db.Query, %v\n", err)
-	//	c.String(http.StatusInternalServerError, "Server Error")
-	//	return
-	//}
-	//itemIds := make([]model.LikedItemId, 0)
-	//for rows1.Next() {
-	//	var i model.LikedItemId
-	//
-	//	if err := rows1.Scan(&i.ItemId); err != nil {
-	//		log.Printf("fail: rows.Scan, %v\n", err)
-	//
-	//		if err := rows1.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
-	//			log.Printf("fail: rows.Close(), %v\n", err)
-	//		}
-	//		c.String(http.StatusInternalServerError, "Server Error")
-	//		return
-	//	}
-	//	itemIds = append(itemIds, i)
-	//}
-
 	//アイテム一覧取得
 	rows, err := dao.GetLikedItemsDao(userId)
 	if err != nil {

@@ -11,8 +11,6 @@ import (
 )
 
 func RegisterLike(c *gin.Context) {
-	//userId := c.Query("user_id")
-	//itemId := c.Query("item_id")
 
 	// リクエストボディ読み込む
 	body, err := io.ReadAll(c.Request.Body)
