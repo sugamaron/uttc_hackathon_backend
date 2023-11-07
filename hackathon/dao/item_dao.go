@@ -32,8 +32,18 @@ func GetItemsDao(lessonId string, categoryId string, order string) (*sql.Rows, e
 	}
 }
 
+//	func GetItemDetailDao(itemId string) (*sql.Rows, error) {
+//		const sql_get = "SELECT title, registrant, registration_date, updater, update_date, description, url, likes FROM item WHERE item_id = ?"
+//		rows, err := db.Query(sql_get, itemId)
+//		if err != nil {
+//			log.Printf("fail: db.Query, %v\n", err)
+//			return nil, err
+//		} else {
+//			return rows, nil
+//		}
+//	}
 func GetItemDetailDao(itemId string) (*sql.Rows, error) {
-	const sql_get = "SELECT title, registrant, registration_date, updater, update_date, description, url, likes FROM item WHERE item_id = ?"
+	const sql_get = "SELECT title, registrant, registration_date, updater, update_date, description, url, likes, image_url FROM item WHERE item_id = ?"
 	rows, err := db.Query(sql_get, itemId)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)

@@ -25,6 +25,7 @@ type ItemDetail struct {
 	Description      string    `json:"description"`
 	Url              string    `json:"url"`
 	Likes            int       `json:"likes"`
+	ImageUrl         string    `json:"image_url"`
 }
 
 type BookDetail struct {

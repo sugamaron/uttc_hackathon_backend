@@ -26,7 +26,7 @@ func GetItemDetail(c *gin.Context) {
 		//データベースからdatetime型を受け取るとき、[]uint8に変換されるので、[]uint8型を受け入れるScan用の変数dをつくる
 		var d model.RawDateData
 		if err := rows.Scan(&i.Title, &i.Registrant, &d.RegistrationDate, &i.Updater, &d.UpdateDate,
-			&i.Description, &i.Url, &i.Likes); err != nil {
+			&i.Description, &i.Url, &i.Likes, &i.ImageUrl); err != nil {
 			log.Printf("fail: rows.Scan, %v\n", err)
 
 			if err := rows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要
