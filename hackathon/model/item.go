@@ -9,6 +9,7 @@ type Item struct {
 	RegistrationDate time.Time `json:"registration_date"`
 	UpdateDate       time.Time `json:"update_date"`
 	Likes            int       `json:"likes"`
+	ImageUrl         string    `json:"image_url"`
 }
 
 type RawDateData struct {
