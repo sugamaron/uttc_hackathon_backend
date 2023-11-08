@@ -55,6 +55,7 @@ type ItemForUpdate struct {
 	UpdateDate  time.Time `json:"update_date"`
 	Description string    `json:"description"`
 	Url         string    `json:"url"`
+	ImageUrl    string    `json:"image_url"`
 }
 
 type LikeNum struct {

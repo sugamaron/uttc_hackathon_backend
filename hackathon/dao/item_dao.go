@@ -88,6 +88,15 @@ func UpdateItemDao(itemId string, newItem model.ItemForUpdate) error {
 			return err
 		}
 	}
+
+	if newItem.ImageUrl != "" {
+		_, err := db.Exec("UPDATE item SET image_url=? WHERE item_id = ?", newItem.ImageUrl, itemId)
+		if err != nil {
+			log.Printf("fail: db.Exec, %v\n", err)
+			return err
+		}
+	}
+
 	const sql_update = "UPDATE item SET updater = ?, update_date = ? WHERE item_id = ?"
 	_, err := db.Exec(sql_update, newItem.Updater, newItem.UpdateDate, itemId)
 	if err != nil {
