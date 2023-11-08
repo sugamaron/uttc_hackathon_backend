@@ -73,3 +73,10 @@ type LikedItem struct {
 	Likes            int       `json:"likes"`
 	CategoryId       string    `json:"category_id"`
 }
+
+type RankingItem struct {
+	ItemId     string `json:"item_id"`
+	Title      string `json:"title"`
+	Likes      int    `json:"likes"`
+	CategoryId string `json:"category_id"`
+}

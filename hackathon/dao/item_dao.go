@@ -140,3 +140,14 @@ func GetLikedItemsDao(userId string) (*sql.Rows, error) {
 		return rows, nil
 	}
 }
+
+func GetRankingDao() (*sql.Rows, error) {
+	const sql_get = "SELECT item_id, title, likes, category_id FROM item ORDER BY likes DESC LIMIT 5"
+	rows, err := db.Query(sql_get)
+	if err != nil {
+		log.Printf("fail: db.Query, %v\n", err)
+		return nil, err
+	} else {
+		return rows, nil
+	}
+}
