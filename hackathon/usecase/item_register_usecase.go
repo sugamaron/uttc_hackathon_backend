@@ -43,6 +43,11 @@ func RegisterItem(c *gin.Context) {
 		return
 	}
 
+	// 画像urlの欄に何も入力されていない時はno imageの画像パス
+	if newItem.ImageUrl == "" {
+		newItem.ImageUrl = "http://design-ec.com/d/e_others_50/l_e_others_500.jpg"
+	}
+
 	newItem.ItemId = idString
 	jst, err := time.LoadLocation("Asia/Tokyo")
 	if err != nil {

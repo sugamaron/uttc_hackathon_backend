@@ -46,6 +46,7 @@ type ItemForRegistration struct {
 	Url              string    `json:"url"`
 	Likes            int       `json:"likes"`
 	Price            int       `json:"price"`
+	ImageUrl         string    `json:"image_url"`
 }
 
 type ItemForUpdate struct {

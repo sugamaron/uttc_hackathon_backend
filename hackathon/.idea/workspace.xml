@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dao/item_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/item_dao.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/item.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/item.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usecase/item_register_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/item_register_usecase.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +93,6 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="bookテーブル作成" />
     <MESSAGE value="getbookdetailのapi変更" />
     <MESSAGE value="GetItemsDaoのorder部分修正" />
     <MESSAGE value="getuserでemailで取得できるようにする" />
@@ -117,7 +117,8 @@
     <MESSAGE value="エラー修正" />
     <MESSAGE value="取得するアイテム登録日、更新日を日本時間に修正" />
     <MESSAGE value="image urlテスト" />
-    <option name="LAST_COMMIT_MESSAGE" value="image urlテスト" />
+    <MESSAGE value="アイテム一覧取得でimage urlも取得できるようにした" />
+    <option name="LAST_COMMIT_MESSAGE" value="アイテム一覧取得でimage urlも取得できるようにした" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
