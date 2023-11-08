@@ -51,6 +51,8 @@ type ItemForRegistration struct {
 
 type ItemForUpdate struct {
 	Title       string    `json:"title"`
+	CategoryId  string    `json:"category_id"`
+	LessonId    string    `json:"lesson_id"`
 	Updater     string    `json:"updater"`
 	UpdateDate  time.Time `json:"update_date"`
 	Description string    `json:"description"`

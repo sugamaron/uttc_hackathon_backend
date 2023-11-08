@@ -74,6 +74,20 @@ func UpdateItemDao(itemId string, newItem model.ItemForUpdate) error {
 			return err
 		}
 	}
+	if newItem.LessonId != "" {
+		_, err := db.Exec("UPDATE item SET lesson_id=? WHERE item_id = ?", newItem.LessonId, itemId)
+		if err != nil {
+			log.Printf("fail: db.Exec, %v\n", err)
+			return err
+		}
+	}
+	if newItem.CategoryId != "" {
+		_, err := db.Exec("UPDATE item SET category_id=? WHERE item_id = ?", newItem.CategoryId, itemId)
+		if err != nil {
+			log.Printf("fail: db.Exec, %v\n", err)
+			return err
+		}
+	}
 	if newItem.Description != "" {
 		_, err := db.Exec("UPDATE item SET description=? WHERE item_id = ?", newItem.Description, itemId)
 		if err != nil {
