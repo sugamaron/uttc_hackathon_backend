@@ -9,9 +9,9 @@ import (
 	"net/http"
 )
 
-func GetUserByEmail(c *gin.Context) {
-	email := c.Param("email")
-	rows, err := dao.GetUserDao(email)
+func GetUserByName(c *gin.Context) {
+	userName := c.Query("user_name")
+	rows, err := dao.GetUserByNameDao(userName)
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
 		c.String(http.StatusInternalServerError, "Server Error")

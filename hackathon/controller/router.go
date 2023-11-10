@@ -17,7 +17,8 @@ func GetRouter() *gin.Engine {
 	r.Use(cors.New(config))
 
 	r.POST("/users", usecase.RegisterUser)
-	r.GET("/users/:email", usecase.GetUser)
+	r.GET("/users/:email", usecase.GetUserByEmail)
+	r.GET("/users", usecase.GetUserByName)
 	r.DELETE("/users/:user_id", usecase.DeleteUser)
 	r.PUT("/users/:user_id", usecase.UpdateUser)
 	r.GET("/lessons", usecase.GetLessons)
@@ -28,6 +29,7 @@ func GetRouter() *gin.Engine {
 	r.GET("/items/likes", usecase.GetLikedItems)
 	r.GET("/items/ranking", usecase.GetRanking)
 	r.GET("/items/search", usecase.GetSearchItems)
+	r.GET("/items/:user_name", usecase.GetRegisteredItems)
 	r.POST("/items", usecase.RegisterItem)
 	r.PUT("/items/:item_id", usecase.UpdateItem)
 	r.DELETE("/items/:item_id", usecase.DeleteItem)

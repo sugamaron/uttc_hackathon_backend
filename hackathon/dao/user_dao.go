@@ -59,6 +59,17 @@ func GetUserDao(email string) (*sql.Rows, error) {
 	}
 }
 
+func GetUserByNameDao(userName string) (*sql.Rows, error) {
+	const sql_get = "SELECT user_id, user_name, email, term FROM user WHERE user_name = ?"
+	rows, err := db.Query(sql_get, userName)
+	if err != nil {
+		log.Printf("fail: db.Query, %v\n", err)
+		return nil, err
+	} else {
+		return rows, nil
+	}
+}
+
 func DeleteUserDao(user_id string) error {
 	const sql_delete = "DELETE FROM user WHERE user_id = ?"
 	_, err := db.Exec(sql_delete, user_id)
