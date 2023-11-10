@@ -27,6 +27,7 @@ func GetRouter() *gin.Engine {
 	r.GET("/items/books/:item_id", usecase.GetBookDetail)
 	r.GET("/items/likes", usecase.GetLikedItems)
 	r.GET("/items/ranking", usecase.GetRanking)
+	r.GET("/items/search", usecase.GetSearchItems)
 	r.POST("/items", usecase.RegisterItem)
 	r.PUT("/items/:item_id", usecase.UpdateItem)
 	r.DELETE("/items/:item_id", usecase.DeleteItem)

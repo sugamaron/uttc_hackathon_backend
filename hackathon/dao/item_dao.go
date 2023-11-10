@@ -151,3 +151,14 @@ func GetRankingDao() (*sql.Rows, error) {
 		return rows, nil
 	}
 }
+
+func GetSearchItemsDao(titleString string) (*sql.Rows, error) {
+	const sql_get = "SELECT item_id, title, registrant, registration_date, update_date, likes, category_id, image_url FROM item WHERE title LIKE %?%"
+	rows, err := db.Query(sql_get, titleString)
+	if err != nil {
+		log.Printf("fail: db.Query, %v\n", err)
+		return nil, err
+	} else {
+		return rows, nil
+	}
+}

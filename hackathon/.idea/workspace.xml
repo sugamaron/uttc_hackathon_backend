@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dec8e9f-b37e-40b5-b846-da6c487e4cfa" name="変更" comment="">
-      <change afterPath="$PROJECT_DIR$/usecase/item_get_ranking_usecase.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/usecase/item_get_search__usecase.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dao/item_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/item_dao.go" afterDir="false" />
@@ -94,7 +94,6 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update item修正" />
     <MESSAGE value="itemRegister修正" />
     <MESSAGE value="rows.next追加" />
     <MESSAGE value="item.daoのinsert修正" />
@@ -119,7 +118,8 @@
     <MESSAGE value="item registerで画像パスを登録可能にした" />
     <MESSAGE value="item updateで画像urlも更新可能にした" />
     <MESSAGE value="item updateで章、カテゴリも更新できるようにした" />
-    <option name="LAST_COMMIT_MESSAGE" value="item updateで章、カテゴリも更新できるようにした" />
+    <MESSAGE value="アイテムランキング取得api実装" />
+    <option name="LAST_COMMIT_MESSAGE" value="アイテムランキング取得api実装" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

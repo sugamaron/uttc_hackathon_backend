@@ -80,3 +80,14 @@ type RankingItem struct {
 	Likes      int    `json:"likes"`
 	CategoryId string `json:"category_id"`
 }
+
+type SearchItem struct {
+	ItemId           string    `json:"item_id"`
+	Title            string    `json:"title"`
+	Registrant       string    `json:"registrant"`
+	RegistrationDate time.Time `json:"registration_date"`
+	UpdateDate       time.Time `json:"update_date"`
+	Likes            int       `json:"likes"`
+	CategoryId       string    `json:"category_id"`
+	ImageUrl         string    `json:"image_url"`
+}
