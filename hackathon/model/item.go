@@ -72,6 +72,7 @@ type LikedItem struct {
 	UpdateDate       time.Time `json:"update_date"`
 	Likes            int       `json:"likes"`
 	CategoryId       string    `json:"category_id"`
+	ImageUrl         string    `json:"image_url"`
 }
 
 type RankingItem struct {
