@@ -45,7 +45,7 @@ func RegisterItem(c *gin.Context) {
 
 	// 画像urlの欄に何も入力されていない時はno imageの画像パス
 	if newItem.ImageUrl == "" {
-		newItem.ImageUrl = "http://design-ec.com/d/e_others_50/l_e_others_500.jpg"
+		newItem.ImageUrl = "https://sesupport.edumall.jp/hc/article_attachments/900009570963/noImage.jpg"
 	}
 
 	newItem.ItemId = idString

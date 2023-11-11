@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dec8e9f-b37e-40b5-b846-da6c487e4cfa" name="変更" comment="">
-      <change afterPath="$PROJECT_DIR$/usecase/item_get_register_usecase.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/usecase/user_get_by_name_usecase.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/item_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/item_dao.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/user_dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/user_dao.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usecase/user_get_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/user_get_usecase.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usecase/item_register_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/usecase/item_register_usecase.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,8 +92,6 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="エラー探し2" />
-    <MESSAGE value="update user修正" />
     <MESSAGE value="corsエラー対策" />
     <MESSAGE value="日付エラー対策" />
     <MESSAGE value="getitemDetail修正" />
@@ -122,7 +115,9 @@
     <MESSAGE value="検索用api実装" />
     <MESSAGE value="検索用api修正" />
     <MESSAGE value="いいねしたアイテム取得api修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="いいねしたアイテム取得api修正" />
+    <MESSAGE value="ユーザーが登録したアイテム一覧取得api実装" />
+    <MESSAGE value="ユーザーが登録したアイテム一覧取得api変更" />
+    <option name="LAST_COMMIT_MESSAGE" value="ユーザーが登録したアイテム一覧取得api変更" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
